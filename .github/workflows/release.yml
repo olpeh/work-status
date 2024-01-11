@@ -36,6 +36,19 @@ jobs:
       - name: Generate new version
         run: npm version ${{ github.event.inputs.version }}
 
+      - name: get-npm-version
+          id: package-version
+          uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+      - name: Bump WP-plugin version in work-status.php with the new NPM version
+        run: |
+          sed -i -e "s/Version: .*/Version: ${{ steps.package-version.outputs.current-version }}/g" work-status.php
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "chore: bump WP-plugin version ${{ steps.package-version.outputs.current-version }}"
+
       - name: Push new version tag to repository
         run: git push origin main
 
@@ -44,10 +57,6 @@ jobs:
 
       - name: Build
         run: yarn build
-
-      - name: Bump WP-plugin version in work-status.php
-        run: |
-          sed -i -e "s/Version: .*/Version: ${{ github.event.inputs.version }}/g" work-status.php
 
       - name: Delete everything else than the build output folder
         run: |
