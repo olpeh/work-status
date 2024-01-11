@@ -61,6 +61,7 @@ jobs:
 
       - name: Commit changes
         run: |
+          git add work-status/work-status.php
           git add .
           git commit -m "chore: version ${{ steps.package-version.outputs.current-version }}"
 
