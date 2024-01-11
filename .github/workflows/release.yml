@@ -45,7 +45,7 @@ jobs:
 
       - name: Delete everything else than the build output folder
         run: |
-          find . -maxdepth 1 ! -name 'work-status' ! -name '.git' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
+          find . -maxdepth 1 ! -name 'work-status' ! -name '.git' ! -name 'package.json' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
 
       - name: Commit changes
         run: |
