@@ -52,8 +52,8 @@ jobs:
           git add .
           git commit -m "chore: release ${{ github.event.inputs.version }}"
 
-      - name: Generate new tag
-        run: git tag ${{ github.event.inputs.version }}
+      - name: Generate new version
+        run: npm version ${{ github.event.inputs.version }}
 
       - name: Push new version tag to repository
         run: git push origin release --tags
