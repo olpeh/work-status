@@ -33,7 +33,13 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Create branch
+      - name: Generate new version
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: Push new version tag to repository
+        run: git push origin main
+
+      - name: Create branch release
         run: git checkout -b release
 
       - name: Build
@@ -57,8 +63,6 @@ jobs:
 
       - name: Push new version tag to repository
         run: git push origin release --tags --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate outputs
         id: generate_outputs
