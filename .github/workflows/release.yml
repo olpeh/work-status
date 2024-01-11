@@ -82,7 +82,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Checkout release branch
-        run: git checkout release
+        run: git checkout -b release
       - name: Create release notes
         uses: johnyherangi/create-release-notes@main
         id: create-release-notes
