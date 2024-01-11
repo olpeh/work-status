@@ -33,25 +33,6 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Generate new version
-        run: npm version ${{ github.event.inputs.version }}
-
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@v1.3.1
-
-      - name: Bump WP-plugin version in work-status.php with the new NPM version
-        run: |
-          sed -i -e "s/Version: .*/Version: ${{ steps.package-version.outputs.current-version }}/g" work-status.php
-
-      - name: Commit changes
-        run: |
-          git add .
-          git commit -m "chore: bump WP-plugin version ${{ steps.package-version.outputs.current-version }}"
-
-      - name: Push new version tag to repository
-        run: git push origin main
-
       - name: Create branch release
         run: git checkout -b release
 
@@ -62,10 +43,21 @@ jobs:
         run: |
           find . -maxdepth 1 ! -name 'work-status' ! -name '.git' ! -name 'package.json' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
 
+      - name: Generate new version
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+      - name: Bump WP-plugin version in work-status.php with the new NPM version
+        run: |
+          sed -i -e "s/Version: .*/Version: ${{ steps.package-version.outputs.current-version }}/g" work-status/work-status.php
+
       - name: Commit changes
         run: |
           git add .
-          git commit -m "chore: release ${{ github.event.inputs.version }}"
+          git commit -m "chore: version ${{ steps.package-version.outputs.current-version }}"
 
       - name: Push new version tag to repository
         run: git push origin release --tags --force
@@ -84,6 +76,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Checkout release branch
+        run: git checkout release
       - name: Create release notes
         uses: johnyherangi/create-release-notes@main
         id: create-release-notes
