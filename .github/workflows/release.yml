@@ -38,15 +38,21 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Delete everything else than the build output folder
+      - name: Delete almost everything
         run: |
-          find . -maxdepth 1 ! -name 'work-status' ! -name '.git' ! -name 'package.json' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
-     
+          find . -maxdepth 1 ! -name 'dist' ! -name 'plugin-update-checker' ! -name 'work-status.php' ! -name '.git' ! -name 'package.json' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
+
+      - name: Copy dist to root
+        run: cp -r dist/* .
+
+      - name: Delete dist
+        run: rm -rf dist
+
       - name: Commit changes
         run: |
           git add .
           git commit -m "chore: version ${{ github.event.inputs.version }}"
-      
+
       - name: Generate new version part 1
         run: npm version ${{ github.event.inputs.version }}
 
@@ -56,19 +62,21 @@ jobs:
 
       - name: Bump WP-plugin version in work-status.php with the new NPM version
         run: |
-          sed -i -e "s/Version: .*/Version: ${{ steps.package-version.outputs.current-version }}/g" work-status/work-status.php
+          sed -i -e "s/Version: .*/Version: ${{ steps.package-version.outputs.current-version }}/g" work-status.php
 
       - name: Commit changes
         run: |
-          git add work-status/work-status.php
           git add .
           git commit -m "chore: version ${{ steps.package-version.outputs.current-version }}"
-        
-      - name: Generate new version part 2
-        run: npm version ${{ github.event.inputs.version }}
+
+      - name: Delete work-status tag
+        run: git tag -d work-status || true
+
+      - name: Create new git tag
+        run: git tag work-status
 
       - name: Push new version tag to repository
-        run: git push origin release --tags --force
+        run: git push origin release --tags
 
       - name: Generate outputs
         id: generate_outputs
@@ -94,4 +102,4 @@ jobs:
         with:
           tag_name: ${{ needs.version.outputs.new_tag }}
           release_name: Release ${{ needs.version.outputs.new_tag }}
-          body: Latest release 
+          body: Latest release
