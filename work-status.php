@@ -21,7 +21,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $updateChecker = PucFactory::buildUpdateChecker( 'https://github.com/olpeh/work-status', __FILE__, 'work-status' );
 
-$updateChecker->setBranch( 'release' );
+$updateChecker->getVcsApi()->enableReleaseAssets();
 
 add_shortcode( 'work_report', function () {
 
