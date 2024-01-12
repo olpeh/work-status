@@ -28,7 +28,7 @@ add_shortcode( 'work_report', function () {
 	ob_start();
 	?>
 
-    <link rel="stylesheet" href="<?php echo plugins_url( 'index.css', __FILE__ ); ?>"/>
+    <link rel="stylesheet" href="<?php echo plugins_url( 'style.css', __FILE__ ); ?>"/>
     <script type="module" src="<?php echo plugins_url( 'index.js', __FILE__ ); ?>"></script>
 
     <div id="work-root"></div>
