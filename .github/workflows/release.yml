@@ -69,14 +69,20 @@ jobs:
           git add .
           git commit -m "chore: version ${{ steps.package-version.outputs.current-version }}"
 
-      - name: Delete work-status tag
-        run: git tag -d work-status || true
+      - name: Commit work-status.php and package.json to main branch
+        run: |
+          git checkout main
+          git checkout release work-status.php
+          git checkout release package.json
+          git commit -m "chore: version ${{ steps.package-version.outputs.current-version }}"
+          git push origin main
+          git checkout release
 
-      - name: Create new git tag
-        run: git tag work-status
+      - name: Generate new version part 2
+        run: npm version ${{ github.event.inputs.version }}
 
       - name: Push new version tag to repository
-        run: git push origin release --tags
+        run: git push origin release --tags --force
 
       - name: Generate outputs
         id: generate_outputs
