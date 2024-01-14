@@ -19,7 +19,7 @@ on:
 
 jobs:
   version:
-    name: Create new version ${{ github.event.inputs.version || "patch" }}
+    name: Create new version ${{ github.event.inputs.version || 'patch' }}
     runs-on: ubuntu-latest
     # Map the output from the generate_outputs job to the inputs of the release job
     outputs:
@@ -56,10 +56,10 @@ jobs:
       - name: Commit changes
         run: |
           git add .
-          git commit -m "chore: version ${{ github.event.inputs.version || "patch" }}"
+          git commit -m "chore: version ${{ github.event.inputs.version || 'patch' }}"
 
       - name: Generate new version part 1
-        run: npm version ${{ github.event.inputs.version || "patch" }}
+        run: npm version ${{ github.event.inputs.version || 'patch' }}
 
       - name: get-npm-version
         id: package-version
@@ -84,7 +84,7 @@ jobs:
           git checkout release
 
       - name: Generate new version part 2
-        run: npm version ${{ github.event.inputs.version || "patch" }}
+        run: npm version ${{ github.event.inputs.version || 'patch' }}
 
       - name: Push new version tag to repository
         run: git push origin release --tags --force
