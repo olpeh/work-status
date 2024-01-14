@@ -31,7 +31,7 @@ export const App = () => {
   console.log(data, error, isLoading);
 
   return (
-    <div className={styles.app}>
+    <main className={styles.app}>
       {isLoading && <p>Ladataan dataa...</p>}
       {error && <p>Virhe: {error}</p>}
       {data && (
@@ -93,6 +93,6 @@ export const App = () => {
           </ul>
         </div>
       )}
-    </div>
+    </main>
   );
 };

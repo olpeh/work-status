@@ -5,7 +5,6 @@
   font-family: Poppins;
   font-style: normal;
   height: 100vh;
-  background: linear-gradient(190deg, #1c4742 -4.22%, #0c1c1a 100%);
   overflow-y: auto;
   color: #fff;
   letter-spacing: 0.005em;
@@ -41,6 +40,8 @@
   text-transform: uppercase;
   font-style: italic;
   margin-bottom: 0;
+  font-family: Poppins;
+  color: #fff;
 }
 
 .reportTable {

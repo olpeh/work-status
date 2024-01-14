@@ -28,3 +28,7 @@ body {
   padding: 0;
   height: 100vh;
 }
+
+main {
+  background: linear-gradient(190deg, #1c4742 -4.22%, #0c1c1a 100%);
+}
