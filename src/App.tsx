@@ -50,12 +50,11 @@ export const App = () => {
                 <table
                   className={styles.reportTable}
                   cellPadding="8"
-                  cellSpacing={1}
-                  border={1}
+                  cellSpacing={0}
                 >
                   <thead>
-                    <tr style={{ fontWeight: 700 }}>
-                      <td>Team</td>
+                    <tr>
+                      <td></td>
                       <td>AH</td>
                       <td>BUK</td>
                       <td>Samvirk</td>
@@ -64,15 +63,14 @@ export const App = () => {
                   </thead>
                   <tbody>
                     {report.Teams.map((team) => (
-                      <tr
-                        key={team.Name}
-                        className={`${styles.teamRow} ${styles[team.Name]}`}
-                      >
-                        <td
-                          className={`${styles.teamLogo} ${
-                            styles["team" + team.Name]
-                          }`}
-                        ></td>
+                      <tr key={team.Name}>
+                        <td>
+                          <div
+                            className={`${styles.teamLogo} ${
+                              styles["team" + team.Name]
+                            }`}
+                          ></div>
+                        </td>
                         <td>{getStatusFormatted(team.AHStatus)}</td>
                         <td>{getStatusFormatted(team.BUKStatus)}</td>
                         <td>

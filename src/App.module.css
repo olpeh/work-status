@@ -45,6 +45,39 @@
 .reportTable {
   width: 60%;
   border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.reportTable tbody td {
+  border: 1px solid rgb(43 76 74);
+  padding: 20px;
+}
+
+.reportTable tr:first-child td {
+  border-top: none;
+}
+
+.reportTable tr:last-child td {
+  border-bottom: none;
+}
+
+.reportTable tr td:first-child {
+  border-left: none;
+}
+
+.reportTable tr td:last-child {
+  border-right: none;
+}
+
+.reportTable thead tr {
+  font-weight: 900;
+  color: rgb(255, 255, 0);
+  text-transform: uppercase;
+  text-align: center;
+}
+.reportTable thead td {
+  /* rotate text -10 deg */
+  transform: translate(0, 0) rotate(-10deg) skew(0) skewY(0) scaleX(1) scaleY(1);
 }
 
 .teamLogo {
@@ -52,6 +85,7 @@
   height: 32px;
   background-repeat: no-repeat center center;
   background-size: 100% 100%;
+  padding: 10px;
 }
 
 .teamGreen {
