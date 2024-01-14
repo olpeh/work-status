@@ -3,6 +3,7 @@ import { reports } from "./models/reports";
 import { getFormattedDate } from "./utils/date";
 import { getResultFormatted, getStatusFormatted } from "./utils/status";
 import workLogo from "./assets/work-logo.svg";
+import styles from "./App.module.css";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -30,24 +31,24 @@ export const App = () => {
   console.log(data, error, isLoading);
 
   return (
-    <div className="App">
+    <div className={styles.app}>
       {isLoading && <p>Ladataan dataa...</p>}
       {error && <p>Virhe: {error}</p>}
       {data && (
         <div>
-          <div className="work-logo-wrapper">
-            <img src={workLogo} alt="Work logo" className="work-logo" />
+          <div className={styles.workLogoWrapper}>
+            <img src={workLogo} alt="Work logo" className={styles.workLogo} />
           </div>
-          <ul className="reports">
+          <ul className={styles.reports}>
             {data.map((report) => (
-              <li key={report.Title} className="report">
-                <h2 className="report-title">{report.Title}</h2>
+              <li key={report.Title} className={styles.report}>
+                <h2 className={styles.reportTitle}>{report.Title}</h2>
                 <p>
                   {getFormattedDate(report.DateFrom)} –{" "}
                   {getFormattedDate(report.DateTo)}
                 </p>
                 <table
-                  className="report-table"
+                  className={styles.reportTable}
                   cellPadding="8"
                   cellSpacing={1}
                   border={1}
@@ -63,8 +64,15 @@ export const App = () => {
                   </thead>
                   <tbody>
                     {report.Teams.map((team) => (
-                      <tr key={team.Name} className={`team-row ${team.Name}`}>
-                        <td className={`team-logo team-${team.Name}`}></td>
+                      <tr
+                        key={team.Name}
+                        className={`${styles.teamRow} ${styles[team.Name]}`}
+                      >
+                        <td
+                          className={`${styles.teamLogo} ${
+                            styles["team" + team.Name]
+                          }`}
+                        ></td>
                         <td>{getStatusFormatted(team.AHStatus)}</td>
                         <td>{getStatusFormatted(team.BUKStatus)}</td>
                         <td>
