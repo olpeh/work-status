@@ -1,6 +1,9 @@
 import { Status, Team } from "../models/reports";
 
-export const getStatusFormatted = (status: Status) => {
+export const getStatusFormatted = (
+  status: Status,
+  samvirkGoalPerMonth?: number,
+) => {
   console.log(status);
 
   switch (true) {
@@ -11,7 +14,7 @@ export const getStatusFormatted = (status: Status) => {
     }
     // SamvirkStatus
     case "ContributionAmount" in status && "MemberCount" in status: {
-      const exact = status.ContributionAmount / 200; // TODO
+      const exact = status.ContributionAmount / (samvirkGoalPerMonth || 200);
       return exact.toLocaleString("fi-FI", { maximumFractionDigits: 1 }) + "%";
     }
     // AHStatus
@@ -21,10 +24,14 @@ export const getStatusFormatted = (status: Status) => {
   }
 };
 
-export const getResultFormatted = (team: Team) => {
+export const getResultFormatted = (
+  team: Team,
+  samvirkGoalPerMonth?: number,
+) => {
   const ahResult = team.AHStatus.ContributionAmount;
   const bukStatus = team.BUKStatus.OnTrackCount / team.BUKStatus.MemberCount;
-  const samvirkStatus = team.SamvirkStatus.ContributionAmount / 200; /*TODO*/
+  const samvirkStatus =
+    team.SamvirkStatus.ContributionAmount / (samvirkGoalPerMonth || 200);
   const totalResult = ahResult * bukStatus * samvirkStatus;
   return totalResult.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
 };

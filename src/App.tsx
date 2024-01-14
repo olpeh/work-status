@@ -59,8 +59,18 @@ export const App = () => {
                           <td>{team.Name}</td>
                           <td>{getStatusFormatted(team.AHStatus)}</td>
                           <td>{getStatusFormatted(team.BUKStatus)}</td>
-                          <td>{getStatusFormatted(team.SamvirkStatus)}</td>
-                          <td>{getResultFormatted(team)}</td>
+                          <td>
+                            {getStatusFormatted(
+                              team.SamvirkStatus,
+                              report.SamvirkGoalPerMonth,
+                            )}
+                          </td>
+                          <td>
+                            {getResultFormatted(
+                              team,
+                              report.SamvirkGoalPerMonth,
+                            )}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
