@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { reports } from "./models/reports";
 import { getFormattedDate } from "./utils/date";
-import { getResult, getStatus } from "./utils/status";
+import { getResultFormatted, getStatusFormatted } from "./utils/status";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -57,10 +57,10 @@ export const App = () => {
                       {report.Teams.map((team) => (
                         <tr key={team.Name}>
                           <td>{team.Name}</td>
-                          <td>{getStatus(team.AHStatus)}</td>
-                          <td>{getStatus(team.BUKStatus)}</td>
-                          <td>{getStatus(team.SamvirkStatus)}</td>
-                          <td>{getResult(team)}</td>
+                          <td>{getStatusFormatted(team.AHStatus)}</td>
+                          <td>{getStatusFormatted(team.BUKStatus)}</td>
+                          <td>{getStatusFormatted(team.SamvirkStatus)}</td>
+                          <td>{getResultFormatted(team)}</td>
                         </tr>
                       ))}
                     </tbody>

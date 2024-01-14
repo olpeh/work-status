@@ -1,6 +1,6 @@
 import { Status, Team } from "../models/reports";
 
-export const getStatus = (status: Status) => {
+export const getStatusFormatted = (status: Status) => {
   console.log(status);
 
   switch (true) {
@@ -21,7 +21,7 @@ export const getStatus = (status: Status) => {
   }
 };
 
-export const getResult = (team: Team) => {
+export const getResultFormatted = (team: Team) => {
   const ahResult = team.AHStatus.ContributionAmount;
   const bukStatus = team.BUKStatus.OnTrackCount / team.BUKStatus.MemberCount;
   const samvirkStatus = team.SamvirkStatus.ContributionAmount / 200; /*TODO*/
