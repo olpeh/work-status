@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { reports } from "./models/reports";
 import { getFormattedDate } from "./utils/date";
 import { getResultFormatted, getStatusFormatted } from "./utils/status";
+import workLogo from "./assets/work-logo.svg";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -34,49 +35,52 @@ export const App = () => {
       {error && <p>Virhe: {error}</p>}
       {data && (
         <div>
-          <ul>
+          <div className="work-logo-wrapper">
+            <img src={workLogo} alt="Work logo" className="work-logo" />
+          </div>
+          <ul className="reports">
             {data.map((report) => (
-              <div key={report.Title}>
-                <h2>{report.Title}</h2>
-                <li>
-                  <p>
-                    {getFormattedDate(report.DateFrom)} -
-                    {getFormattedDate(report.DateTo)}
-                  </p>
-                  <table>
-                    <thead>
-                      <tr>
-                        <td>Team</td>
-                        <td>AH</td>
-                        <td>BUK</td>
-                        <td>Samvirk</td>
-                        <td>Tulos</td>
+              <li key={report.Title} className="report">
+                <h2 className="report-title">{report.Title}</h2>
+                <p>
+                  {getFormattedDate(report.DateFrom)} –{" "}
+                  {getFormattedDate(report.DateTo)}
+                </p>
+                <table
+                  className="report-table"
+                  cellPadding="8"
+                  cellSpacing={1}
+                  border={1}
+                >
+                  <thead>
+                    <tr style={{ fontWeight: 700 }}>
+                      <td>Team</td>
+                      <td>AH</td>
+                      <td>BUK</td>
+                      <td>Samvirk</td>
+                      <td>Tulos</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {report.Teams.map((team) => (
+                      <tr key={team.Name} className={`team-row ${team.Name}`}>
+                        <td className={`team-logo team-${team.Name}`}></td>
+                        <td>{getStatusFormatted(team.AHStatus)}</td>
+                        <td>{getStatusFormatted(team.BUKStatus)}</td>
+                        <td>
+                          {getStatusFormatted(
+                            team.SamvirkStatus,
+                            report.SamvirkGoalPerMonth,
+                          )}
+                        </td>
+                        <td>
+                          {getResultFormatted(team, report.SamvirkGoalPerMonth)}
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {report.Teams.map((team) => (
-                        <tr key={team.Name}>
-                          <td>{team.Name}</td>
-                          <td>{getStatusFormatted(team.AHStatus)}</td>
-                          <td>{getStatusFormatted(team.BUKStatus)}</td>
-                          <td>
-                            {getStatusFormatted(
-                              team.SamvirkStatus,
-                              report.SamvirkGoalPerMonth,
-                            )}
-                          </td>
-                          <td>
-                            {getResultFormatted(
-                              team,
-                              report.SamvirkGoalPerMonth,
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </li>
-              </div>
+                    ))}
+                  </tbody>
+                </table>
+              </li>
             ))}
           </ul>
         </div>

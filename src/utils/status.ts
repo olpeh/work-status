@@ -19,7 +19,11 @@ export const getStatusFormatted = (
     }
     // AHStatus
     default: {
-      return status.ContributionAmount;
+      return (
+        status.ContributionAmount.toLocaleString("fi-FI", {
+          maximumFractionDigits: 1,
+        }) + "€"
+      );
     }
   }
 };

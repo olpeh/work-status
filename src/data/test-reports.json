@@ -11,29 +11,29 @@
         "Name": "Orange",
         "MemberCount": 44,
         "BUKStatus": { "MemberCount": 14, "OnTrackCount": 13 },
-        "SamvirkStatus": { "MemberCount": 3, "ContributionAmount": 222423 },
-        "AHStatus": { "ContributionAmount": 0 }
+        "SamvirkStatus": { "MemberCount": 3, "ContributionAmount": 24233 },
+        "AHStatus": { "ContributionAmount": 500 }
       },
       {
         "Name": "Blue",
         "MemberCount": 40,
         "BUKStatus": { "MemberCount": 13, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 201898 },
-        "AHStatus": { "ContributionAmount": 0 }
+        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 28980 },
+        "AHStatus": { "ContributionAmount": 1500 }
       },
       {
         "Name": "Red",
         "MemberCount": 43,
         "BUKStatus": { "MemberCount": 16, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 323404 },
-        "AHStatus": { "ContributionAmount": 0 }
+        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 34041 },
+        "AHStatus": { "ContributionAmount": 2500 }
       },
       {
         "Name": "Green",
         "MemberCount": 39,
         "BUKStatus": { "MemberCount": 14, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 423650 },
-        "AHStatus": { "ContributionAmount": 0 }
+        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 46502 },
+        "AHStatus": { "ContributionAmount": 3500 }
       }
     ]
   },
