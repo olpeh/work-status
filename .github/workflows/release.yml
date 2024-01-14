@@ -1,5 +1,10 @@
 name: Generate tag and release
 on:
+  # Deploy from specified branches
+  push:
+    branches:
+      - main
+  # Deploy by manual trigger
   workflow_dispatch:
     inputs:
       version:
