@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    inputs:
-      version: "patch"
   # Deploy by manual trigger
   workflow_dispatch:
     inputs:
@@ -18,6 +16,9 @@ on:
           - patch
           - minor
           - major
+  with:
+    inputs:
+      version: "patch"
 
 jobs:
   version:
