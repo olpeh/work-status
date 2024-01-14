@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    inputs:
+      version: "patch"
   # Deploy by manual trigger
   workflow_dispatch:
     inputs:
