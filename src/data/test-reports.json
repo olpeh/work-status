@@ -1,78 +1,154 @@
 [
   {
-    "Title": "My test report",
-    "DateFrom": "2023-11-01",
-    "DateTo": "2023-12-31",
-    "MyShareTargetOnDate": 100,
-    "MyShareNextThreshold": 100,
+    "Title": "2024 - Etappi #1",
+    "DateFrom": "2024-01-09",
+    "DateTo": "2024-03-07",
+    "Days": 58,
+    "MyShareTargetOnDate": 4,
+    "MyShareNextThreshold": 35,
     "SamvirkGoalPerMonth": 200,
     "Teams": [
       {
         "Name": "Orange",
-        "MemberCount": 44,
-        "BUKStatus": { "MemberCount": 14, "OnTrackCount": 13 },
-        "SamvirkStatus": { "MemberCount": 3, "ContributionAmount": 24233 },
-        "AHStatus": { "ContributionAmount": 500 }
+        "MemberCount": 48,
+        "BUKStatus": {
+          "MemberCount": 15,
+          "OnTrackCount": 0,
+          "OnTrackOnDateCount": 1
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 0
+        },
+        "AHStatus": {
+          "ContributionAmount": 0
+        }
       },
       {
         "Name": "Blue",
-        "MemberCount": 40,
-        "BUKStatus": { "MemberCount": 13, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 28980 },
-        "AHStatus": { "ContributionAmount": 1500 }
+        "MemberCount": 41,
+        "BUKStatus": {
+          "MemberCount": 15,
+          "OnTrackCount": 0,
+          "OnTrackOnDateCount": 0
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 18
+        },
+        "AHStatus": {
+          "ContributionAmount": 0
+        }
       },
       {
         "Name": "Red",
-        "MemberCount": 43,
-        "BUKStatus": { "MemberCount": 16, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 34041 },
-        "AHStatus": { "ContributionAmount": 2500 }
+        "MemberCount": 42,
+        "BUKStatus": {
+          "MemberCount": 15,
+          "OnTrackCount": 0,
+          "OnTrackOnDateCount": 1
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 0
+        },
+        "AHStatus": {
+          "ContributionAmount": 0
+        }
       },
       {
         "Name": "Green",
-        "MemberCount": 39,
-        "BUKStatus": { "MemberCount": 14, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 46502 },
-        "AHStatus": { "ContributionAmount": 3500 }
+        "MemberCount": 41,
+        "BUKStatus": {
+          "MemberCount": 15,
+          "OnTrackCount": 0,
+          "OnTrackOnDateCount": 1
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 0
+        },
+        "AHStatus": {
+          "ContributionAmount": 300
+        }
       }
-    ]
+    ],
+    "SamvirkGoalPerSprint": 381
   },
   {
     "Title": "My test 2",
     "DateFrom": "2023-11-01",
     "DateTo": "2023-12-31",
+    "Days": 0,
     "MyShareTargetOnDate": 100,
-    "MyShareNextThreshold": 100,
+    "MyShareNextThreshold": 0,
     "SamvirkGoalPerMonth": 200,
     "Teams": [
       {
         "Name": "Orange",
         "MemberCount": 44,
-        "BUKStatus": { "MemberCount": 14, "OnTrackCount": 13 },
-        "SamvirkStatus": { "MemberCount": 3, "ContributionAmount": 222423 },
-        "AHStatus": { "ContributionAmount": 1000 }
+        "BUKStatus": {
+          "MemberCount": 14,
+          "OnTrackCount": 13,
+          "OnTrackOnDateCount": 0
+        },
+        "SamvirkStatus": {
+          "MemberCount": 3,
+          "ContributionAmount": 1361
+        },
+        "AHStatus": {
+          "ContributionAmount": 5065
+        }
       },
       {
         "Name": "Blue",
         "MemberCount": 40,
-        "BUKStatus": { "MemberCount": 13, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 201898 },
-        "AHStatus": { "ContributionAmount": 2000 }
+        "BUKStatus": {
+          "MemberCount": 13,
+          "OnTrackCount": 12,
+          "OnTrackOnDateCount": 0
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 1536
+        },
+        "AHStatus": {
+          "ContributionAmount": 1531
+        }
       },
       {
         "Name": "Red",
         "MemberCount": 43,
-        "BUKStatus": { "MemberCount": 16, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 323404 },
-        "AHStatus": { "ContributionAmount": 3000 }
+        "BUKStatus": {
+          "MemberCount": 16,
+          "OnTrackCount": 12,
+          "OnTrackOnDateCount": 0
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 741
+        },
+        "AHStatus": {
+          "ContributionAmount": 1672
+        }
       },
       {
         "Name": "Green",
         "MemberCount": 39,
-        "BUKStatus": { "MemberCount": 14, "OnTrackCount": 12 },
-        "SamvirkStatus": { "MemberCount": 4, "ContributionAmount": 423650 },
-        "AHStatus": { "ContributionAmount": 4000 }
+        "BUKStatus": {
+          "MemberCount": 14,
+          "OnTrackCount": 12,
+          "OnTrackOnDateCount": 0
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 423
+        },
+        "AHStatus": {
+          "ContributionAmount": 1561
+        }
       }
-    ]
+    ],
+    "SamvirkGoalPerSprint": 0
   }
 ]
