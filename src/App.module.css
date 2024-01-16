@@ -59,6 +59,12 @@
   padding: 20px;
 }
 
+@media screen and (max-width: 420px) {
+  .reportTable tbody td {
+    padding: 6px;
+  }
+}
+
 .reportTable tr:first-child td {
   border-top: none;
 }
