@@ -44,7 +44,7 @@ final class Plugin
 		require_once __DIR__ . '/endpoint-work_report_data.php';
 		require_once __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
 
-		$updateChecker = PucFactory::buildUpdateChecker( 'https://github.com/olpeh/work-status', __FILE__, 'work-status' );
+		$updateChecker = PucFactory::buildUpdateChecker( 'https://github.com/olpeh/work-status', $this->get_main_file(), 'work-status' );
 		$updateChecker->getVcsApi()->enableReleaseAssets();
 	}
 }
