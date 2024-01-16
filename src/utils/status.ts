@@ -9,12 +9,15 @@ export const getStatusFormatted = (
   switch (true) {
     // BUKStatus
     case "OnTrackCount" in status: {
-      const exact = (status.OnTrackCount / status.MemberCount) * 100;
+      const exact = (status.OnTrackOnDateCount / status.MemberCount) * 100;
       return exact.toLocaleString("fi-FI", { maximumFractionDigits: 1 }) + "%";
     }
     // SamvirkStatus
     case "ContributionAmount" in status && "MemberCount" in status: {
-      const exact = status.ContributionAmount / ((SamvirkGoalPerSprint || 200 ) * status.MemberCount) * 100;
+      const exact =
+        (status.ContributionAmount /
+          ((SamvirkGoalPerSprint || 200) * status.MemberCount)) *
+        100;
       return exact.toLocaleString("fi-FI", { maximumFractionDigits: 1 }) + "%";
     }
     // AHStatus
@@ -35,7 +38,8 @@ export const getResultFormatted = (
   const ahResult = team.AHStatus.ContributionAmount;
   const bukStatus = team.BUKStatus.OnTrackCount / team.BUKStatus.MemberCount;
   const samvirkStatus =
-    team.SamvirkStatus.ContributionAmount / ((SamvirkGoalPerSprint || 200) * team.SamvirkStatus.MemberCount);
+    team.SamvirkStatus.ContributionAmount /
+    ((SamvirkGoalPerSprint || 200) * team.SamvirkStatus.MemberCount);
   const totalResult = ahResult * bukStatus * samvirkStatus;
   return totalResult.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
 };

@@ -3,6 +3,7 @@ import { z } from "zod";
 const BUKStatus = z.object({
   MemberCount: z.number(),
   OnTrackCount: z.number(),
+  OnTrackOnDateCount: z.number(),
 });
 
 const SamvirkStatus = z.object({
