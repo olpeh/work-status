@@ -23,9 +23,9 @@ const fetcher = async (url: string) => {
 };
 
 export const App = () => {
-
-  // @ts-ignore
-  const url = document.getElementById('work-root').getAttribute('data-source-url');
+  const url = document
+    .getElementById("work-root")
+    ?.getAttribute("data-source-url");
 
   const { data, error, isLoading } = useSWR(url, fetcher);
 
@@ -81,7 +81,10 @@ export const App = () => {
                           )}
                         </td>
                         <td>
-                          {getResultFormatted(team, report.SamvirkGoalPerSprint)}
+                          {getResultFormatted(
+                            team,
+                            report.SamvirkGoalPerSprint,
+                          )}
                         </td>
                       </tr>
                     ))}
