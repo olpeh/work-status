@@ -38,6 +38,7 @@ function convert_work_report_data( string $data, string $title ): array {
 	$headers = explode( "\t", trim(array_shift( $lines ) ) );
 	$arr     = [
 		"Title"                => $title,
+		"ReportDate"            => "",
 		"DateFrom"            => "",
 		"DateTo"              => "",
 		"Days"                => "",
@@ -50,6 +51,7 @@ function convert_work_report_data( string $data, string $title ): array {
 	foreach ( $lines as $line ) {
 		$rowData                    = explode( "\t", trim($line ) );
 		$teamData                   = array_combine( $headers, $rowData );
+		$arr["ReportDate"]            = date( "Y-m-d", strtotime( $teamData["ReportDate"] ) );
 		$arr["DateFrom"]            = date( "Y-m-d", strtotime( $teamData["DateFrom"] ) );
 		$arr["DateTo"]              = date( "Y-m-d", strtotime( $teamData["DateTo"] ) );
 		$arr["Days"]                = intval( $teamData["ReportDays"] );
