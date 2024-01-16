@@ -7,6 +7,7 @@
     "MyShareTargetOnDate": 4,
     "MyShareNextThreshold": 35,
     "SamvirkGoalPerMonth": 200,
+    "ReportDate": "2024-01-16T20:39:00+00:00",
     "Teams": [
       {
         "Name": "Orange",
@@ -83,6 +84,7 @@
     "MyShareTargetOnDate": 100,
     "MyShareNextThreshold": 0,
     "SamvirkGoalPerMonth": 200,
+    "ReportDate": "2024-01-16T20:39:00+00:00",
     "Teams": [
       {
         "Name": "Orange",

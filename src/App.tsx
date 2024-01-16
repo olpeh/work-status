@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { reports } from "./models/reports";
-import { getFormattedDate } from "./utils/date";
+import { getFormattedDate, getFormattedDateTime } from "./utils/date";
 import { getResultFormatted, getStatusFormatted } from "./utils/status";
 import workLogo from "./assets/work-logo.svg";
 import styles from "./App.module.css";
@@ -94,6 +94,9 @@ export const App = () => {
                     ))}
                   </tbody>
                 </table>
+                <p>
+                  Tulokset päivitetty: {getFormattedDateTime(report.ReportDate)}
+                </p>
               </li>
             ))}
           </ul>

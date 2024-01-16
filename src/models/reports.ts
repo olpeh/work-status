@@ -32,6 +32,7 @@ const Report = z.object({
   SamvirkGoalPerMonth: z.number(),
   SamvirkGoalPerSprint: z.number(),
   Teams: z.array(Team),
+  ReportDate: z.string(),
 });
 
 export const reports = z.array(Report);
