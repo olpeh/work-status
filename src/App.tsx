@@ -23,8 +23,9 @@ const fetcher = async (url: string) => {
 };
 
 export const App = () => {
-  const url =
-    "https://portal.bccsuomi.fi/wp-admin/admin-ajax.php?action=fetch_work_reports";
+
+  // @ts-ignore
+  const url = document.getElementById('work-root').getAttribute('data-source-url');
 
   const { data, error, isLoading } = useSWR(url, fetcher);
 

@@ -10,7 +10,7 @@ add_shortcode( 'work_report', function () {
 	<link rel="stylesheet" href="<?php echo plugins_url( 'style.css', Plugin::Instance()->get_main_file() ); ?>"/>
 	<script type="module" src="<?php echo plugins_url( 'index.js', Plugin::Instance()->get_main_file() ); ?>"></script>
 
-	<div id="work-root"></div>
+	<div id="work-root" data-source-url="<?php echo esc_url( admin_url('admin-ajax.php?action=fetch_work_reports' ) ); ?>"></div>
 
 	<?php
 	return ob_get_clean();
