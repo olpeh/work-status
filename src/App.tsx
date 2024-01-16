@@ -48,6 +48,10 @@ export const App = () => {
                   {getFormattedDate(report.DateFrom)} –{" "}
                   {getFormattedDate(report.DateTo)}
                 </p>
+                <p>
+                  MyShare tavoite raportointihetkellä:{" "}
+                  {report.MyShareTargetOnDate}%
+                </p>
                 <table
                   className={styles.reportTable}
                   cellPadding="8"
