@@ -76,11 +76,11 @@ export const App = () => {
                         <td>
                           {getStatusFormatted(
                             team.SamvirkStatus,
-                            report.SamvirkGoalPerMonth,
+                            report.SamvirkGoalPerSprint,
                           )}
                         </td>
                         <td>
-                          {getResultFormatted(team, report.SamvirkGoalPerMonth)}
+                          {getResultFormatted(team, report.SamvirkGoalPerSprint)}
                         </td>
                       </tr>
                     ))}

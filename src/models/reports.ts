@@ -29,6 +29,7 @@ const Report = z.object({
   MyShareTargetOnDate: z.number(),
   MyShareNextThreshold: z.number(),
   SamvirkGoalPerMonth: z.number(),
+  SamvirkGoalPerSprint: z.number(),
   Teams: z.array(Team),
 });
 
