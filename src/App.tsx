@@ -33,8 +33,8 @@ export const App = () => {
 
   return (
     <div className={styles.app}>
-      {isLoading && <p>Ladataan dataa...</p>}
-      {error && <p>Virhe: {error}</p>}
+      {isLoading && <p className={styles.loading}>Ladataan dataa...</p>}
+      {error && <p className={styles.error}>Virhe: {`${error}`}</p>}
       {data && (
         <div>
           <div className={styles.workLogoWrapper}>

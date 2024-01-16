@@ -13,6 +13,14 @@
   align-items: center;
 }
 
+.loading,
+.error {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .workLogo {
   height: 100px;
 }

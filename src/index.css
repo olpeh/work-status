@@ -31,4 +31,5 @@ main {
   background: linear-gradient(190deg, #1c4742 -4.22%, #0c1c1a 100%);
   padding-top: 20px;
   padding-bottom: 100px;
+  min-height: 100vh;
 }
