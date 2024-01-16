@@ -23,14 +23,11 @@
 }
 
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
 main {
   background: linear-gradient(190deg, #1c4742 -4.22%, #0c1c1a 100%);
   padding-top: 20px;
-  min-height: 160vh; /* This is a hack, won't work with 3 or more reports */
 }
