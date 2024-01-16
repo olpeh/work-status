@@ -45,7 +45,7 @@ jobs:
 
       - name: Delete almost everything
         run: |
-          find . -maxdepth 1 ! -name 'dist' ! -name 'plugin-update-checker' ! -name 'work-status.php' ! -name '.git' ! -name 'package.json' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
+          find . -maxdepth 1 ! -name 'dist' ! -name 'wordpress' ! -name 'work-status.php' ! -name '.git' ! -name 'package.json' ! -name '.gitignore' ! -name '.' -exec rm -rf {} +
 
       - name: Copy dist to root
         run: cp -r dist/* .
