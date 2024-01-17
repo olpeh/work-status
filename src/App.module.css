@@ -22,7 +22,7 @@
 }
 
 .workLogo {
-  height: 100px;
+  height: 48px;
 }
 
 .reports {
@@ -44,6 +44,7 @@
   text-transform: uppercase;
   font-style: italic;
   margin-bottom: 0;
+  margin-top: 0;
   font-family: Poppins;
   color: #fff;
 }
@@ -51,7 +52,7 @@
 .reportTable {
   width: 60%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .reportTable tbody td {
