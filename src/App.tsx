@@ -26,7 +26,11 @@ export const App = () => {
     .getElementById("work-root")
     ?.getAttribute("data-source-url");
 
-  const { data, error, isLoading } = useSWR(url, fetcher);
+  const { data, error, isLoading } = useSWR(url, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    shouldRetryOnError: false,
+  });
 
   return (
     <div className={styles.app}>
