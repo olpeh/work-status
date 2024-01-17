@@ -39,5 +39,7 @@ export const getResultFormatted = (
     team.SamvirkStatus.ContributionAmount /
     ((SamvirkGoalPerSprint || 200) * team.SamvirkStatus.MemberCount);
   const totalResult = ahResult * bukStatus * samvirkStatus;
-  return totalResult.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
+  return (
+    totalResult.toLocaleString("fi-FI", { maximumFractionDigits: 1 }) + "p"
+  );
 };
