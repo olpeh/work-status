@@ -63,6 +63,22 @@
   .reportTable tbody td {
     padding: 6px;
   }
+
+  .teamLogo {
+    width: 24px !important;
+    height: 24px !important;
+    padding: 6px !important;
+  }
+
+  .reportTable {
+    width: 94%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .reportTable tbody td {
+    padding: 4px;
+  }
 }
 
 .reportTable tr:first-child td {

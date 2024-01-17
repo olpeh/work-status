@@ -49,7 +49,7 @@ export const App = () => {
                   MyShare tavoite raportointihetkellä:{" "}
                   {report.MyShareTargetOnDate}%
                 </p>
-                <table className={styles.reportTable}>
+                <table className={styles.reportTable} cellPadding={6}>
                   <thead>
                     <tr>
                       <td></td>
