@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
+import { formatInTimeZone } from "date-fns-tz";
 
 const TIME_ZONE = "Europe/Helsinki";
 
@@ -9,6 +9,5 @@ export const getFormattedDate = (dateStr: string) => {
 };
 
 export const getFormattedDateTime = (dateStr: string) => {
-  const dateInCorrectTimeZone = utcToZonedTime(dateStr, TIME_ZONE);
-  return format(dateInCorrectTimeZone, "d.M.yyyy HH:mm");
+  return formatInTimeZone(dateStr, TIME_ZONE, "d.M.yyyy HH:mm");
 };
