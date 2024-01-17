@@ -8,7 +8,6 @@ import styles from "./App.module.css";
 const isProd = process.env.NODE_ENV === "production";
 
 const fetcher = async (url: string) => {
-  isProd ? console.log("prod") : console.log("dev");
   let unsafeData;
   if (isProd) {
     const res = await fetch(url);
@@ -28,8 +27,6 @@ export const App = () => {
     ?.getAttribute("data-source-url");
 
   const { data, error, isLoading } = useSWR(url, fetcher);
-
-  console.log(data, error, isLoading);
 
   return (
     <div className={styles.app}>

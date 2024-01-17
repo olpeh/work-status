@@ -4,8 +4,6 @@ export const getStatusFormatted = (
   status: Status,
   SamvirkGoalPerSprint?: number,
 ) => {
-  console.log(status);
-
   switch (true) {
     // BUKStatus
     case "OnTrackCount" in status: {
