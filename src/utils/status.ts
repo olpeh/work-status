@@ -34,7 +34,8 @@ export const getResultFormatted = (
   SamvirkGoalPerSprint?: number,
 ) => {
   const ahResult = team.AHStatus.ContributionAmount;
-  const bukStatus = team.BUKStatus.OnTrackCount / team.BUKStatus.MemberCount;
+  const bukStatus =
+    team.BUKStatus.OnTrackOnDateCount / team.BUKStatus.MemberCount;
   const samvirkStatus =
     team.SamvirkStatus.ContributionAmount /
     ((SamvirkGoalPerSprint || 200) * team.SamvirkStatus.MemberCount);
