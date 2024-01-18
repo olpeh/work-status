@@ -11,7 +11,7 @@ add_action( 'wp_ajax_fetch_work_reports', function () {
 		while ( have_rows( 'reports', 'option' ) ) {
 			the_row();
 
-			$data = convert_work_report_data( get_sub_field( 'data' ), get_sub_field( 'title' ) );
+			$data = work_convert_report_data( get_sub_field( 'data' ), get_sub_field( 'title' ) );
 
 			$reports[] = $data;
 		}
@@ -29,13 +29,14 @@ add_action( 'wp_ajax_fetch_work_reports', function () {
  *
  * @return array
  */
-function convert_work_report_data( string $data, string $title ): array {
+function work_convert_report_data( string $data, string $title ): array {
 
 	// Split the input into lines
 	$lines = explode( "\n", $data );
 
 	// Parse the header line to get the keys
 	$headers = explode( "\t", trim(array_shift( $lines ) ) );
+
 	$arr     = [
 		"Title"                => $title,
 		"ReportDate"            => "",
@@ -51,7 +52,8 @@ function convert_work_report_data( string $data, string $title ): array {
 	foreach ( $lines as $line ) {
 		$rowData                    = explode( "\t", trim($line ) );
 		$teamData                   = array_combine( $headers, $rowData );
-		$arr["ReportDate"]            = date( DATE_ATOM, strtotime( $teamData["ReportDate"] ) );
+
+		$arr["ReportDate"] = date_create($teamData["ReportDate"], wp_timezone() )->format( 'c');
 		$arr["DateFrom"]            = date( "Y-m-d", strtotime( $teamData["DateFrom"] ) );
 		$arr["DateTo"]              = date( "Y-m-d", strtotime( $teamData["DateTo"] ) );
 		$arr["Days"]                = intval( $teamData["ReportDays"] );
