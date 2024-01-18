@@ -125,3 +125,8 @@
 .teamBlue {
   background-image: url("assets/team-blue.svg");
 }
+
+.screenshotWrapper {
+  text-align: center;
+  margin-top: 20px;
+}

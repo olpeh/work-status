@@ -5,6 +5,8 @@ import { getResultFormatted, getStatusFormatted } from "./utils/status";
 import workLogo from "./assets/work-logo.svg";
 import styles from "./App.module.css";
 import { dummyLoadingReport } from "./data/dummyReport";
+import html2canvas from "html2canvas";
+import { useRef } from "react";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -25,6 +27,7 @@ const fetcher = async (url: string) => {
 };
 
 export const App = () => {
+  const screenshotRef = useRef<HTMLDivElement>(null);
   const url = document
     .getElementById("work-root")
     ?.getAttribute("data-source-url");
@@ -34,6 +37,37 @@ export const App = () => {
     revalidateOnFocus: false,
     shouldRetryOnError: false,
   });
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const downloadFile = (data: any, title: string) => {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = data;
+    downloadLink.download = `${title}.png`;
+    downloadLink.click();
+  };
+
+  const getScreenshot = (title: string) => {
+    console.log("trying to take a screenshot");
+    // This needs to be the element with the background color or its parent
+    const screenshotTarget = document.querySelector("main");
+    if (!screenshotTarget) {
+      console.error("Could not find the element to screenshot");
+      alert("Screenshotin luonti epäonnistui");
+      return;
+    }
+    console.log(screenshotTarget);
+    html2canvas(screenshotTarget)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .then((canvas: any) => {
+        const base64image = canvas.toDataURL("image/png");
+        // window.open(base64image, '_blank');
+        // window.location.href = base64image;
+        downloadFile(base64image, title);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
 
   return (
     <div className={styles.app}>
@@ -56,6 +90,16 @@ export const App = () => {
             ))}
         </ul>
       </div>
+      <div className={styles.screenshotWrapper} ref={screenshotRef}>
+        <button
+          onClick={() => {
+            screenshotRef.current?.remove();
+            getScreenshot(data && data[0] ? data[0].Title : "work-tilanne");
+          }}
+        >
+          Lataa screenshot
+        </button>
+      </div>
     </div>
   );
 };
@@ -68,7 +112,7 @@ const Report = ({
   isLoading: boolean;
 }) => {
   return (
-    <li className={styles.report}>
+    <li className={`${styles.report} report`} id={report.Title}>
       <h2 className={styles.reportTitle}>{report.Title}</h2>
       <p>
         {getFormattedDate(report.DateFrom)} – {getFormattedDate(report.DateTo)}
