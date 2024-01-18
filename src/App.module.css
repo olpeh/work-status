@@ -128,5 +128,8 @@
 
 .screenshotWrapper {
   text-align: center;
-  margin-top: 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 10px;
 }

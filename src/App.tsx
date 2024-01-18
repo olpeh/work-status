@@ -97,7 +97,7 @@ export const App = () => {
             getScreenshot(data && data[0] ? data[0].Title : "work-tilanne");
           }}
         >
-          Lataa screenshot
+          Lataa kuvana
         </button>
       </div>
     </div>

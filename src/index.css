@@ -33,6 +33,7 @@ main {
   padding-bottom: 100px;
   min-height: 100vh;
   color: #fff;
+  position: relative;
 }
 
 .wp-block-heading,
