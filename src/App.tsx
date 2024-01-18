@@ -15,7 +15,7 @@ const fetcher = async (url: string) => {
     unsafeData = await res.json();
   } else {
     // simulate slow network by waiting
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     const data = await import("./data/test-reports.json");
     unsafeData = data.default;
   }
