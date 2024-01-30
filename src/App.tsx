@@ -111,13 +111,15 @@ const Report = ({
   report: Report;
   isLoading: boolean;
 }) => {
+  const ahTargetInSprint = 6015.97; // TODO: don't hard code this
+
   return (
     <li className={`${styles.report} report`} id={report.Title}>
       <h2 className={styles.reportTitle}>{report.Title}</h2>
       <p>
         {getFormattedDate(report.DateFrom)} – {getFormattedDate(report.DateTo)}
       </p>
-      <p>MyShare tavoite raportointihetkellä: {report.MyShareTargetOnDate}%</p>
+      <p>Tulokset päivitetty: {getFormattedDateTime(report.ReportDate)}</p>
       <table className={styles.reportTable} cellPadding={6}>
         <thead>
           <tr>
@@ -136,26 +138,84 @@ const Report = ({
                   className={`${styles.teamLogo} ${styles["team" + team.Name]}`}
                 ></div>
               </td>
-              <td>{!isLoading ? getStatusFormatted(team.AHStatus) : "–"}</td>
-              <td>{!isLoading ? getStatusFormatted(team.BUKStatus) : "–"}</td>
               <td>
-                {!isLoading
-                  ? getStatusFormatted(
-                      team.SamvirkStatus,
-                      report.SamvirkGoalPerSprint,
-                    )
-                  : "–"}
+                <div
+                  className={
+                    team.AHStatus.ContributionAmount > ahTargetInSprint
+                      ? styles.targetReached
+                      : ""
+                  }
+                >
+                  {!isLoading
+                    ? getStatusFormatted({ status: team.AHStatus })
+                    : "–"}{" "}
+                  /
+                </div>
+                <div
+                  className={styles.targetInSprint}
+                  title="AH Tavoite tällä etapilla per joukkue"
+                >
+                  {ahTargetInSprint.toLocaleString("fi-FI", {
+                    maximumFractionDigits: 2,
+                  })}
+                  €**
+                </div>
+              </td>
+              <td>
+                <div className={styles.statusToday}>
+                  {!isLoading
+                    ? getStatusFormatted({
+                        status: team.BUKStatus,
+                        useOnTrackOnDateCount: true,
+                      })
+                    : "–"}
+                  *
+                </div>
+                <div>
+                  {!isLoading
+                    ? getStatusFormatted({ status: team.BUKStatus })
+                    : "–"}
+                </div>
               </td>
               <td>
                 {!isLoading
-                  ? getResultFormatted(team, report.SamvirkGoalPerSprint)
+                  ? getStatusFormatted({
+                      status: team.SamvirkStatus,
+                      samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
+                    })
                   : "–"}
+              </td>
+              <td>
+                <div className={styles.statusToday}>
+                  {!isLoading
+                    ? getResultFormatted({
+                        team,
+                        samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
+                        useOnTrackOnDateCount: true,
+                      })
+                    : "–"}
+                  *
+                </div>
+                <div>
+                  {!isLoading
+                    ? getResultFormatted({
+                        team,
+                        samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
+                      })
+                    : "–"}
+                </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p>Tulokset päivitetty: {getFormattedDateTime(report.ReportDate)}</p>
+      <div className={styles.explanation}>
+        <p>
+          MyShare tavoite raportointihetkellä: {report.MyShareTargetOnDate}%
+        </p>
+        <p>* Tilanne raportointihetken tavoitteeseen nähden</p>
+        <p>** AH Tavoite etapin aikana per tiimi</p>
+      </div>
     </li>
   );
 };

@@ -1,14 +1,30 @@
 [
   {
     "Title": "2024 - Etappi #1",
+    "ReportDate": "2024-01-28T14:24:00+02:00",
     "DateFrom": "2024-01-09",
     "DateTo": "2024-03-07",
     "Days": 58,
-    "MyShareTargetOnDate": 4,
+    "MyShareTargetOnDate": 11,
     "MyShareNextThreshold": 35,
     "SamvirkGoalPerMonth": 200,
-    "ReportDate": "2024-01-17T21:49:00+00:00",
     "Teams": [
+      {
+        "Name": "Green",
+        "MemberCount": 41,
+        "BUKStatus": {
+          "MemberCount": 15,
+          "OnTrackCount": 0,
+          "OnTrackOnDateCount": 2
+        },
+        "SamvirkStatus": {
+          "MemberCount": 3,
+          "ContributionAmount": 264
+        },
+        "AHStatus": {
+          "ContributionAmount": 1400
+        }
+      },
       {
         "Name": "Orange",
         "MemberCount": 48,
@@ -19,10 +35,26 @@
         },
         "SamvirkStatus": {
           "MemberCount": 4,
-          "ContributionAmount": 0
+          "ContributionAmount": 356
         },
         "AHStatus": {
-          "ContributionAmount": 0
+          "ContributionAmount": 1530
+        }
+      },
+      {
+        "Name": "Red",
+        "MemberCount": 42,
+        "BUKStatus": {
+          "MemberCount": 15,
+          "OnTrackCount": 1,
+          "OnTrackOnDateCount": 2
+        },
+        "SamvirkStatus": {
+          "MemberCount": 4,
+          "ContributionAmount": 136
+        },
+        "AHStatus": {
+          "ContributionAmount": 650
         }
       },
       {
@@ -31,46 +63,14 @@
         "BUKStatus": {
           "MemberCount": 15,
           "OnTrackCount": 0,
-          "OnTrackOnDateCount": 0
-        },
-        "SamvirkStatus": {
-          "MemberCount": 4,
-          "ContributionAmount": 18
-        },
-        "AHStatus": {
-          "ContributionAmount": 0
-        }
-      },
-      {
-        "Name": "Red",
-        "MemberCount": 42,
-        "BUKStatus": {
-          "MemberCount": 15,
-          "OnTrackCount": 0,
           "OnTrackOnDateCount": 1
         },
         "SamvirkStatus": {
           "MemberCount": 4,
-          "ContributionAmount": 0
+          "ContributionAmount": 227
         },
         "AHStatus": {
-          "ContributionAmount": 0
-        }
-      },
-      {
-        "Name": "Green",
-        "MemberCount": 41,
-        "BUKStatus": {
-          "MemberCount": 15,
-          "OnTrackCount": 0,
-          "OnTrackOnDateCount": 1
-        },
-        "SamvirkStatus": {
-          "MemberCount": 4,
-          "ContributionAmount": 218
-        },
-        "AHStatus": {
-          "ContributionAmount": 300
+          "ContributionAmount": 520
         }
       }
     ],
@@ -115,7 +115,7 @@
           "ContributionAmount": 1536
         },
         "AHStatus": {
-          "ContributionAmount": 1531
+          "ContributionAmount": 10531
         }
       },
       {

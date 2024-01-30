@@ -134,3 +134,26 @@
   bottom: 10px;
   width: 100px;
 }
+
+.statusToday {
+  color: rgb(131, 131, 131);
+  margin-bottom: 0;
+}
+
+.targetInSprint {
+  color: rgb(131, 131, 131);
+}
+
+.targetReached {
+  color: rgb(255, 255, 0);
+  font-weight: bold;
+}
+
+.targetReached::after {
+  content: "🎉";
+}
+
+.explanation {
+  color: rgb(131, 131, 131);
+  text-align: center;
+}
