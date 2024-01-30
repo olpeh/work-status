@@ -214,7 +214,7 @@ const Report = ({
           MyShare tavoite raportointihetkellä: {report.MyShareTargetOnDate}%
         </p>
         <p>* Tilanne raportointihetken tavoitteeseen nähden</p>
-        <p>** AH Tavoite etapin aikana per tiimi</p>
+        <p>** AH-tavoite etapin aikana per tiimi</p>
       </div>
     </li>
   );
