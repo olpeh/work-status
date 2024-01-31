@@ -6,7 +6,10 @@ import workLogo from "./assets/work-logo.svg";
 import styles from "./App.module.css";
 import { dummyLoadingReport } from "./data/dummyReport";
 import html2canvas from "html2canvas";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Toggle } from "./components/toggle";
+
+export type Mode = "statusNow" | "statusForSprint";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -111,7 +114,8 @@ const Report = ({
   report: Report;
   isLoading: boolean;
 }) => {
-  const ahTargetInSprint = 6015.97; // TODO: don't hard code this
+  const [mode, setMode] = useState<Mode>("statusNow");
+  const ahTargetInSprint = 6000; // TODO: don't hard code this
 
   return (
     <li className={`${styles.report} report`} id={report.Title}>
@@ -119,7 +123,7 @@ const Report = ({
       <p>
         {getFormattedDate(report.DateFrom)} – {getFormattedDate(report.DateTo)}
       </p>
-      <p>Tulokset päivitetty: {getFormattedDateTime(report.ReportDate)}</p>
+      <Toggle mode={mode} setMode={setMode} />
       <table className={styles.reportTable} cellPadding={6}>
         <thead>
           <tr>
@@ -139,83 +143,55 @@ const Report = ({
                 ></div>
               </td>
               <td>
-                <div
-                  className={
-                    team.AHStatus.ContributionAmount > ahTargetInSprint
-                      ? styles.targetReached
-                      : ""
-                  }
-                >
-                  {!isLoading
-                    ? getStatusFormatted({ status: team.AHStatus })
-                    : "–"}{" "}
-                  /
-                </div>
-                <div
-                  className={styles.targetInSprint}
-                  title="AH Tavoite tällä etapilla per joukkue"
-                >
-                  {ahTargetInSprint.toLocaleString("fi-FI", {
-                    maximumFractionDigits: 2,
-                  })}
-                  €**
-                </div>
+                {!isLoading
+                  ? getStatusFormatted({ status: team.AHStatus, mode })
+                  : "–"}
               </td>
               <td>
-                <div className={styles.statusToday}>
-                  {!isLoading
-                    ? getStatusFormatted({
-                        status: team.BUKStatus,
-                        useOnTrackOnDateCount: true,
-                      })
-                    : "–"}
-                  *
-                </div>
-                <div>
-                  {!isLoading
-                    ? getStatusFormatted({ status: team.BUKStatus })
-                    : "–"}
-                </div>
+                {!isLoading
+                  ? getStatusFormatted({
+                      status: team.BUKStatus,
+                      mode,
+                    })
+                  : "–"}
               </td>
               <td>
                 {!isLoading
                   ? getStatusFormatted({
                       status: team.SamvirkStatus,
                       samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
+                      mode,
                     })
                   : "–"}
               </td>
               <td>
-                <div className={styles.statusToday}>
-                  {!isLoading
-                    ? getResultFormatted({
-                        team,
-                        samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
-                        useOnTrackOnDateCount: true,
-                      })
-                    : "–"}
-                  *
-                </div>
-                <div>
-                  {!isLoading
-                    ? getResultFormatted({
-                        team,
-                        samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
-                      })
-                    : "–"}
-                </div>
+                {!isLoading
+                  ? getResultFormatted({
+                      team,
+                      samvirkGoalPerSprint: report.SamvirkGoalPerSprint,
+                      mode,
+                    })
+                  : "–"}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className={styles.explanation}>
-        <p>
-          MyShare tavoite raportointihetkellä: {report.MyShareTargetOnDate}%
-        </p>
-        <p>* Tilanne raportointihetken tavoitteeseen nähden</p>
-        <p>** AH-tavoite etapin aikana per tiimi</p>
-      </div>
+      <p>Tulokset päivitetty: {getFormattedDateTime(report.ReportDate)}</p>
+      <ul className={styles.explanation}>
+        <li>
+          {mode === "statusNow"
+            ? `MyShare tavoite raportointihetkellä: ${report.MyShareTargetOnDate}%`
+            : `MyShare tavoite etapin loppuun mennessä: ${report.MyShareNextThreshold}%`}
+        </li>
+        <li>
+          AH-tavoite etapin aikana per tiimi:{" "}
+          {ahTargetInSprint.toLocaleString("fi-FI", {
+            maximumFractionDigits: 0,
+          })}
+          €
+        </li>
+      </ul>
     </li>
   );
 };

@@ -1,19 +1,20 @@
+import { Mode } from "../App";
 import { Status, Team } from "../models/reports";
 
 export const getStatusFormatted = ({
   status,
   samvirkGoalPerSprint,
-  useOnTrackOnDateCount,
+  mode,
 }: {
   status: Status;
   samvirkGoalPerSprint?: number;
-  useOnTrackOnDateCount?: true;
+  mode: Mode;
 }) => {
   switch (true) {
     // BUKStatus
     case "OnTrackCount" in status: {
       const exact =
-        ((useOnTrackOnDateCount
+        ((mode === "statusNow"
           ? status.OnTrackOnDateCount
           : status.OnTrackCount) /
           status.MemberCount) *
@@ -42,15 +43,15 @@ export const getStatusFormatted = ({
 export const getResultFormatted = ({
   team,
   samvirkGoalPerSprint,
-  useOnTrackOnDateCount,
+  mode,
 }: {
   team: Team;
   samvirkGoalPerSprint?: number;
-  useOnTrackOnDateCount?: true;
+  mode: Mode;
 }) => {
   const ahResult = team.AHStatus.ContributionAmount;
   const bukStatus =
-    (useOnTrackOnDateCount
+    (mode === "statusNow"
       ? team.BUKStatus.OnTrackOnDateCount
       : team.BUKStatus.OnTrackCount) / team.BUKStatus.MemberCount;
   const samvirkStatus =
