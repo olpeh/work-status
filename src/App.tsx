@@ -115,7 +115,7 @@ const Report = ({
   isLoading: boolean;
 }) => {
   const [mode, setMode] = useState<Mode>("statusNow");
-  const ahTargetInSprint = 6000; // TODO: don't hard code this
+  const ahTargetInSprint = 7400; // TODO: don't hard code this
 
   return (
     <li className={`${styles.report} report`} id={report.Title}>
