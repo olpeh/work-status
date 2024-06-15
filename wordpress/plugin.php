@@ -39,6 +39,10 @@ final class Plugin
 		return $this->main_file;
 	}
 
+	public function get_plugin_version(): string {
+		return get_plugin_data( $this->get_main_file(), [ 'Version' ] )[0];
+	}
+
 	private function load_dependencies() {
 		require_once __DIR__ . '/shortcode-work_report.php';
 		require_once __DIR__ . '/endpoint-work_report_data.php';
