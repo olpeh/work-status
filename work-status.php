@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: WORK-report
  * Description: View WORK-status
- * Version: 0.5.43
+ * Version: 0.5.44
  * Author:      ojhaapala,jgangso
  * Author URI:  https://www.bccsuomi.fi/
  * Text Domain: work-report
