@@ -40,7 +40,7 @@ final class Plugin
 	}
 
 	public function get_plugin_version(): string {
-		return get_plugin_data( $this->get_main_file(), [ 'Version' ] )[0];
+		return get_plugin_data( $this->get_main_file(), false, false )[ 'Version' ];
 	}
 
 	private function load_dependencies() {
